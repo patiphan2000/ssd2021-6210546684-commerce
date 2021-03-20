@@ -3,17 +3,17 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.6'
 
-gem 'devise'
 # For pagination
 gem 'kaminari'
 
-gem 'actionpack-page_caching'
-
+# For authentication
+gem 'devise'
+# For views rendering
 gem 'slim'
 # This is for generating random stuff
 gem 'faker'
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
-gem 'rails', '~> 6.1.3'
+# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'rails', '~> 6.1.1'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
@@ -40,8 +40,10 @@ group :production do
 end
 
 group :development, :test do
-  # For debuging
+  # For debugging
   gem 'pry', '~> 0.13.1'
+  # For testing
+  gem 'rspec-rails', '~> 4.0.2'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3', '~> 1.4'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
