@@ -7,6 +7,7 @@ class ProductsController < ApplicationController
   # GET /products or /products.json
   def index
     @products = Product.all
+    @categories = Category.all
   end
 
   # GET /products/1 or /products/1.json
@@ -58,6 +59,7 @@ class ProductsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
