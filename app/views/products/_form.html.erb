@@ -31,6 +31,11 @@
     <%= form.number_field :quantity %>
   </div>
 
+  <h3>Status</h3>
+  <div>
+    <%= form.collection_check_boxes :status, Product.statuses.map, :last, :first %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
