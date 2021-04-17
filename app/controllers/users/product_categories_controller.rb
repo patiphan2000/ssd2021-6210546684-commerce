@@ -1,4 +1,4 @@
-class ProductCategoriesController < ApplicationController
+class Users::ProductCategoriesController < ApplicationController
     def create
         @categories = Category.find(params[:category_id])
         product = Product.find_by(product_detail: product_category_params[:result])

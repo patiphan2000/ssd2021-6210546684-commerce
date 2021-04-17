@@ -1,8 +1,6 @@
-class ProductsController < ApplicationController
+class Users::ProductsController < ApplicationController
 
-  before_action :authenticate_user!, only: [:create, :edit, :destroy, :csv_upload]
-
-  before_action :set_product, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, only: [:create,:edit,:destroy,:csv_upload]
 
   # GET /products or /products.json
   def index
@@ -10,7 +8,7 @@ class ProductsController < ApplicationController
     @categories = Category.all
     respond_to do |format|
       format.html
-      format.csv { send_data generate_csv(Product.all), file_name: 'product.csv' }
+      format.csv { send_data generate_csv(Product.all), file_name: 'products.csv' }
     end
   end
 
@@ -34,7 +32,7 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product, notice: "Product was successfully created." }
+        format.html { redirect_to action: :index, notice: "Product was successfully created." }
         format.json { render :show, status: :created, location: @product }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -47,7 +45,7 @@ class ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @product.update(product_params)
-        format.html { redirect_to @product, notice: "Product was successfully updated." }
+        format.html { redirect_to action: :index, notice: "Product was successfully updated." }
         format.json { render :show, status: :ok, location: @product }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -58,36 +56,36 @@ class ProductsController < ApplicationController
 
   # DELETE /products/1 or /products/1.json
   def destroy
+    @product = Product.find(params[:id])
     @product.destroy
-    respond_to do |format|
-      format.html { redirect_to products_url, notice: "Product was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to action: :index
   end
 
   def csv_upload
     data = params[:csv_file].read.split("\n")
     data.each do |line|
       attr = line.split(",").map(&:strip)
-      Product.create title: attr[0], product_detail: attr[1], quantity: attr[2], price: attr[3]
+      Product.create product_name: attr[0], product_detail: attr[1], quantity: attr[2], price: attr[3]
     end
     redirect_to action: :index
   end
 
+  def delete_image
+    @image = ActiveStorage::Attachment.find(params[:id])
+    @image.purge
+    redirect_to action: :index
+  end
 
   private
 
-    def generate_csv(articles)
-      articles.map { |a| [a.title, a.product_detail, a.quantity, a.price, a.created_at.to_date].join(',')}.join("\n")
-    end
-
-    # Use callbacks to share common setup or constraints between actions.
-    def set_product
-      @product = Product.find(params[:id])
+    def generate_csv(products)
+      products.map { |a| [a.product_name, a.product_detail, a.quantity, a.price, a.created_at.to_date].join(',') }.join("\n")
     end
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:product_name, :product_detail, :price, :quantity)
+      params.require(:product).permit(:product_name, :product_detail, :price, :quantity, :primary_image,:supported_images => [], :status => []).tap do |w|
+        w[:status] = w[:status][1].to_i
+      end
     end
 end

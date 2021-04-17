@@ -4,4 +4,6 @@ class Product < ApplicationRecord
     validates_numericality_of :price, :only_decimal => true, :greater_than_or_equal_to => 1.0
     has_many :product_category, dependent: :destroy
     has_many :category, through: :product_category
+    has_one_attached :primary_image
+    has_many_attached :supported_images
 end
