@@ -30,5 +30,6 @@
 </row>
 <br>
 
-<%= link_to '<button type="button">New Category</button>'.html_safe, new_users_category_path %>
-
+<%= link_to new_users_category_path do %>
+      <%= button_tag 'New Category', class: 'btn btn-primary' %>
+    <%end%>

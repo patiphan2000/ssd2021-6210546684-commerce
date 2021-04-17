@@ -12,7 +12,7 @@
 
 <% if current_user %>
         add product to this category
-        <%= form_with model: [@categories, @categories.product_category.build] do |p| %>
+        <%= form_with model: [:users, @categories, @categories.product_category.build] do |p| %>
             <%= p.collection_select :result, Product.all, :product_detail, :product_name %>
             <%= p.submit %>
         <% end %>
