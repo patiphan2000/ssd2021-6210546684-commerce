@@ -4,8 +4,12 @@ class Users::ProductsController < ApplicationController
 
   # GET /products or /products.json
   def index
+    @search = params[:search]
+
     @products = Product.all
     @categories = Category.all
+    @product = @product.search(@search) if @search.present?
+    
     respond_to do |format|
       format.html
       format.csv { send_data generate_csv(Product.all), file_name: 'products.csv' }

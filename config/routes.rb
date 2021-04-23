@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'users/products#index'
-  
+  root 'homes#index'
+  resources :homes
   namespace :users do
     resources :products do
       member do
