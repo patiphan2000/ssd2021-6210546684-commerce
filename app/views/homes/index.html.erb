@@ -43,30 +43,3 @@
     </table>
   </div>
 </row>
-<br>
-
-<span class="span ml"><%= link_to 'Category', users_categories_path %></span>
-<%if current_user %>
-  <div class="mb-2">
-    <%= link_to new_users_product_path do %>
-      <%= button_tag 'New product', class: 'btn btn-primary' %>
-    <%end%>
-  </div>
-<%end%>
-
-<row>
-  <div class="col">
-      <div class="mb-2" style="float:right;">
-        <%= link_to '/products.csv' do %>
-          <%= button_tag 'Download', class: 'btn btn-primary' %>
-        <%end%>
-      </div>
-      <% if current_user %>
-        <%= form_tag users_products_csv_upload_path, multipart: true do %>
-          <div><%= file_field_tag :csv_file %></div>
-          <div><%= submit_tag :upload %></div>
-        <%end%>
-      <%end%>
-    </div>
-  </div>
-</row>
