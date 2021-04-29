@@ -13,3 +13,118 @@
  *= require_tree .
  *= require_self
  */
+ @import url('https://fonts.googleapis.com/css?family=Roboto');
+ :root {
+     --white-light: rgb(255, 255, 255, 0.5);
+     --alice-blue: #f8f9fa;
+     --grey: #ededed;
+     --dark-grey: rgba(117, 117, 117, 0.5)
+ }
+ *{
+     padding: 0;
+     margin: 0;
+     box-sizing: border-box;
+ }
+ body {
+     font-family: 'Roboto';
+ }
+
+img {
+    width: 100%;
+    display: block;
+    overflow: hidden;
+}
+.lg-title,
+.md-title,
+.sm-title {
+    padding: 0.6rem 0;
+    text-transform: capitalize;
+}
+.lg-title {
+    font-size: 2.5rem;
+    font-weight: 500;
+    text-align: center;
+    padding: 1.3rem 0;
+}
+.md-title {
+    font-size: 2rem;
+}
+.sm-title {
+    font-size: 2rem;
+    font-weight: 300;
+}
+.text-light {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5;
+    opacity: 0.5;
+    margin: 0.4rem 0;
+}
+.products {
+    background: var(--alice-blue);
+    padding: 3.2rem 0;
+}
+.products .text-light {
+    text-align: center;
+    width: 70%;
+    margin: 0.9rem auto;
+}
+.product {
+    width: 20vw;
+    margin: 2rem;
+    padding: 1rem;
+    position: relative;
+    display: table-cell;
+}
+.product-content {
+    background: var(--grey);
+    padding: 1rem 0.5rem 3rem 0.5rem;
+    cursor: pointer;
+}
+.product-primary-img {
+    background: var(--dark-grey);
+    box-shadow: 0 0 20px 10px var(--white-light);
+    width: 200px;
+    height: 150px;
+    margin: 0 auto;
+    overflow: hidden;
+    transition: 0.5s ease;
+}
+.product-primary-img-frame {
+    margin: 0 -10%;
+}
+.product-primary-img img {
+    display: block;
+    height: 100%;
+    width: auto;
+}
+.product-primary-img:hover {
+    transform: scale(1.5);
+}
+.product-sup-img-container {
+    margin: 0.5rem 0 0 0;
+}
+.product-sup-img {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    border-radius: 5px;
+    overflow: hidden;
+    display: table-cell;
+    transition: 0.5s ease;
+}
+.product-sup-img-frame {
+    margin: 0 -10%;
+}
+.product-sup-img img {
+    display: block;
+    height: 100%;
+    width: auto;
+}
+.product-sup-img:hover {
+    transform: scale(1.5);
+}
+.product-detail {
+    font-size: 0.8rem;
+    font-weight: 300;
+}

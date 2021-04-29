@@ -1,4 +1,5 @@
 <p id="notice"><%= notice %></p>
+<%= stylesheet_link_tag "products.css" %>
 
 <h1>Products</h1>
 
@@ -44,3 +45,48 @@
   </div>
 </row>
 <%= paginate @products %>
+
+<div class="products">
+  <div class="row">
+
+      <% @products.each do |product| %>
+      <div class="col">
+        <div class="product">
+          <div class="product-content">
+            <div class="product-primary-img">
+              <div class="product-primary-img-frame">
+              <% if product.primary_image.attached? %>
+                <%= image_tag(product.primary_image, style: 'width:100%;') %>
+              <% else %>
+                <%= image_tag("default_image.jpeg", style: 'width:100%;') %>
+              <%end%>
+              </div>
+            </div>
+            <div class="product-sup-img-container">
+              <row>
+                <% if product.supported_images.attached? %>
+                  <% (0...product.supported_images.count).each do |pic| %>
+                    <div class="product-sup-img">
+                      <div class="product-sup-img-frame">
+                        <%= image_tag(product.supported_images[pic], style: 'width:100%;') %>
+                      </div>
+                    </div>
+                  <%end%>
+                <% else %>
+                  <div class="product-sup-img">
+                    <div class="product-sup-img-frame">
+                      <%= image_tag("default_image.jpeg", style: 'width:100%;') %>
+                    </div>
+                  </div>
+                <%end%>
+                </row>
+            </div>
+            <div class="sm-title"><%= product.product_name %></div>
+            <div class="product-detail"><%= product.product_detail %></div>
+          </div>
+        </div>
+      </div>
+    <%end%>
+
+  </div>
+</div>
