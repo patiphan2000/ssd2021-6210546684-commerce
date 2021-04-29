@@ -20,7 +20,7 @@
               <% if product.primary_image.attached? %>
                 <%= image_tag(product.primary_image, style: 'width:100%;') %>
               <% else %>
-                <%= image_tag("default_image.jpeg", style: 'width:100%;') %>
+                <div class="no-img"><i class="fas fa-archive" style="color:#ebebeb;"></i></div>
               <%end%>
               </div>
             </div>
@@ -38,7 +38,7 @@
                 <% else %>
                   <div class="product-sup-img">
                     <div class="product-sup-img-frame">
-                      <%= image_tag("default_image.jpeg", style: 'width:100%;') %>
+                      <div class="no-sup-img"><i class="fas fa-archive"></i></div>
                     </div>
                   </div>
                 <%end%>

@@ -133,3 +133,19 @@ img {
 .product-quantity {
     float: right;
 }
+.no-img{
+    width: 500px;
+    height: 500px;
+    background-color: white;
+    font-size: 5rem;
+    padding-left: 35%;
+    vertical-align: middle;
+    text-shadow: 1px 1px 2px #000000;
+}
+.no-sup-img {
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    vertical-align: middle;
+    text-align: center;
+}
