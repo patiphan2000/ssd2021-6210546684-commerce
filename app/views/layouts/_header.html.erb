@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-  <a class="navbar-brand" href="/">We sell stuff</a>
+  <h2 class="navbar-brand navbar-light" onclick="location.href='/'">We sell stuff</h2>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -7,7 +7,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="/users/products">Product</a>
+        <a class="nav-link" onclick="location.href='/'">Product</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/users/categories">Category</a>
@@ -18,6 +18,7 @@
       <%= form_tag('/', :method => "get", id: "search-form") do %>
         <%= text_field_tag :search, params[:search], placeholder: "Search Posts", class: 'form-control' %>
       <% end %>
+      <span style="margin-left:0.5rem;color:white;"><i class="fas fa-search"></i></span>
     </div>
   </div>
 </nav>
