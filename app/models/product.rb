@@ -6,4 +6,8 @@ class Product < ApplicationRecord
     has_many :category, through: :product_category
     has_one_attached :primary_image
     has_many_attached :supported_images
+    def self.search(search)
+        # Title is for the above case, the OP incorrectly had 'name'
+        where("product_name LIKE ?", "%#{search}%")
+    end
 end

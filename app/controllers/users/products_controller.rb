@@ -8,7 +8,9 @@ class Users::ProductsController < ApplicationController
 
     @products = Product.all
     @categories = Category.all
-    @products = @products.search(@search) if @search.present?
+    if @search.present?
+      @products = @products.search(@search)
+    end
     @products = @products.page(params[:page])
     
     respond_to do |format|
