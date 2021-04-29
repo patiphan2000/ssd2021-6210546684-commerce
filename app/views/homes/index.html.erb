@@ -1,5 +1,4 @@
 <p id="notice"><%= notice %></p>
-<%= stylesheet_link_tag "products.css" %>
 
 <h1>Products</h1>
 
@@ -13,7 +12,7 @@
     <% @products.each do |product| %>
       <div class="col">
         <div class="product">
-          <%= link_to users_product_path(product) do %>
+          <%= link_to home_path(product) do %>
           <div class="product-content">
 
             <div class="product-primary-img">
@@ -56,12 +55,12 @@
             </div>
 
             <div style="float:right;">
-              <%= link_to edit_users_product_path(product) do %>
+              <%= link_to '#' do %>
                 <%= button_tag '<i class="fas fa-dollar-sign"></i> buy now'.html_safe, class: 'btn btn-primary btn-sm' %>
               <%end%>
             </div>
             <div>
-              <%= link_to edit_users_product_path(product) do %>
+              <%= link_to '#' do %>
                 <%= button_tag '<i class="fas fa-cart-plus"></i> add to cart'.html_safe, class: 'btn btn-sm' %>
               <%end%>
             </div>
