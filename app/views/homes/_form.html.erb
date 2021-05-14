@@ -2,17 +2,17 @@
 
     <div class="field">
         <%= label_tag :customer_name %>
-        <%= text_field_tag "customer_name" %>
+        <%= text_field_tag "customer_name", nil, :required => true %>
     </div>
 
     <div class="field">
         <%= label_tag :address %>
-        <%= text_field_tag "address" %>
+        <%= text_field_tag "address", nil, :required => true %>
     </div>
 
     <div class="field">
         <%= label_tag :postal_code %>
-        <%= text_field_tag "postal_code" %>
+        <%= text_field_tag "postal_code", nil, :required => true %>
     </div>
     
     <div class="actions">
