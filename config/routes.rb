@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'homes#index'
-  resources :homes
+  resources :homes do
+    match '/create_order' => 'homes#create_order', via: [:get, :post]
+  end
+  resources :orders
   namespace :users do
     resources :products do
       member do

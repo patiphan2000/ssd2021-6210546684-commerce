@@ -14,7 +14,7 @@
     <p class="product-price">$<%= @products.price %></p>
   </span>
   <div style="float:right;">
-    <%= link_to '#' do %>
+    <%= link_to home_create_order_path(@products) do %>
       <%= button_tag '<i class="fas fa-dollar-sign"></i> buy now'.html_safe, class: 'btn btn-primary btn-sm' %>
     <%end%>
   </div>
