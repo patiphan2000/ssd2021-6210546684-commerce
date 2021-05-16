@@ -3,7 +3,11 @@
 <h1>Products</h1>
 
 <row>
-    <span class="span ml"><%= link_to 'admin', users_products_path %></span>
+    <span class="span ml">
+      <%= link_to users_products_path  do%>
+        <%= button_tag '<i class="fas fa-users-cog"></i> admin'.html_safe, class: 'btn' %>
+      <%end%>
+    </span>
 </row>
 
 <div class="products">

@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   resources :homes do
     match '/create_order' => 'homes#create_order', via: [:get, :post]
   end
-  resources :orders
   namespace :users do
+    resources :orders
     resources :products do
       member do
         delete :delete_image

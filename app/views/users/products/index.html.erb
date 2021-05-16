@@ -6,7 +6,7 @@
   <% if current_user %>
     <span class="span ml-3"><%= current_user.email %></span>
     <span class="span ml-3"><%= link_to 'Logout', destroy_user_session_path , method: :delete %></span>
-    <span class="span ml-3"><%= link_to 'orders', orders_path %></span>
+    <span class="span ml-3"><%= link_to 'orders', users_orders_path %></span>
   <% else %>
     <span class="span ml"><%= link_to 'Login', user_session_path %></span>
   <%end%>
